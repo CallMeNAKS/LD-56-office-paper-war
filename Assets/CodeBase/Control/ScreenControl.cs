@@ -7,6 +7,8 @@ public class CameraMover : MonoBehaviour
     public Vector2 minBounds;
     public Vector2 maxBounds;
 
+    public Animator animator;
+
     private Vector2 screenBounds;
 
     void Start()
@@ -16,8 +18,10 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
+        ChangeState();
         if (Input.GetKey(KeyCode.D))
         {
+            animator.SetBool("IsMoveRight", true);
             MoveCamera(Vector3.right);
         }
         else if (Input.GetKey(KeyCode.A))
@@ -42,6 +46,14 @@ public class CameraMover : MonoBehaviour
     void MoveCamera(Vector3 direction)
     {
         transform.Translate(direction * speed * Time.deltaTime);
+        if (direction == Vector3.left)
+        {
+            ChangeState("IsMoveLeft");
+        }
+        else
+        {
+            ChangeState("IsMoveRight");
+        }
     }
 
     void ClampCameraPosition()
@@ -52,5 +64,18 @@ public class CameraMover : MonoBehaviour
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, minBounds.y, maxBounds.y);
 
         transform.position = clampedPosition;
+    }
+
+    private void ChangeState(string state)
+    {
+        animator.SetBool("IsMoveRight", false);
+        animator.SetBool("IsMoveLeft", false);
+
+        animator.SetBool(state, true);
+    }
+    private void ChangeState()
+    {
+        animator.SetBool("IsMoveRight", false);
+        animator.SetBool("IsMoveLeft", false);
     }
 }

@@ -8,6 +8,8 @@ public class Creature : MonoBehaviour
     public float Speed { get; private set; }
     public Sprite CreatureSprite { get; private set; }
 
+    public int Coast;
+
     [SerializeField] private bool _isEnemy;
 
     private Rigidbody2D _rb;
@@ -117,6 +119,10 @@ public class Creature : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{CreatureName} has died!");
+        if (_isEnemy == true)
+        {
+            CashManager.Instance.AddMoney(Coast);
+        }
         Destroy(gameObject);
     }
 }
