@@ -7,16 +7,25 @@ public class CreatureSpawner : MonoBehaviour
     public Sprite creatureSprite;
     public Transform spawnPosition;
 
+    public string creatureName;
+    public int health;
+    public int damage;
+    public float speed;
+
+
     private void Start()
     {
-        objectActivator.onAllObjectsActivated.AddListener(SpawnCreature);
+        if (objectActivator != null)
+        {
+            objectActivator.onAllObjectsActivated.AddListener(SpawnCreature);
+        }
     }
 
-    private void SpawnCreature()
+    public void SpawnCreature()
     {
         GameObject newCreatureObject = Instantiate(creaturePrefab, spawnPosition.position, Quaternion.identity);
 
         Creature newCreature = newCreatureObject.GetComponent<Creature>();
-        newCreature.Initialize("PaperMan", 100, 2.5f, creatureSprite);
+        newCreature.Initialize(creatureName, health, damage, speed, creatureSprite);
     }
 }
