@@ -29,6 +29,12 @@ public class Creature : MonoBehaviour
         Debug.Log($"A creature was created: {CreatureName}, Health: {Health}, Speed: {Speed}");
     }
 
+    public void BonusInitialize(int damage)
+    {
+        Damage += damage;
+        Debug.Log($"A creature was buffed: add {damage} damage");
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
