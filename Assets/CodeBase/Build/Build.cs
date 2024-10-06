@@ -94,4 +94,10 @@ public class Build : MonoBehaviour
         _isBuilt = true;
         _upgradeText.SetActive(true);
     }
+
+    private void ReserAll()
+    {
+        _isBuilt = false;
+        _isBuild = false;
+    }
 }

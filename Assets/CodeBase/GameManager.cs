@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -44,6 +45,13 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetActive(true);
         }
+        OffUI();
+    }
+
+    private void OffUI()
+    {
+        _endGameUI.SetActive(false);
+        _winGameUI.SetActive(false);
     }
 
     public void ÑontinueGame()
