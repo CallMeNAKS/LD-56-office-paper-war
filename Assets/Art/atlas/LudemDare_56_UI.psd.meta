@@ -294,7 +294,7 @@ TextureImporter:
         width: 498
         height: 493
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,6 +302,48 @@ TextureImporter:
       bones: []
       spriteID: 9fb3555863daf544aa25d4f8ae5a2b50
       internalID: -1612169133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_HealthProgressBar
+      rect:
+        serializedVersion: 2
+        x: 2997
+        y: 3969
+        width: 248
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79ecc64211d3ab49ba49394b5bdc76a
+      internalID: 300323493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_OneHealth
+      rect:
+        serializedVersion: 2
+        x: 3011
+        y: 3923
+        width: 46
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab800104f781474d994304301b71a12
+      internalID: -1389776082
       vertices: []
       indices: 
       edges: []
@@ -327,6 +369,8 @@ TextureImporter:
       Money: -885273084
       UI_Brush: -1612169133
       UI_F: -1596449445
+      UI_HealthProgressBar: 300323493
+      UI_OneHealth: -1389776082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
