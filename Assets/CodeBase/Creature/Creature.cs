@@ -48,10 +48,15 @@ public class Creature : MonoBehaviour
         _collider = GetComponent<Collider2D>();
     }
 
+    private bool _isMoving = true;
+
     private void Update()
     {
-        float direction = _isEnemy ? -1 : 1;
-        _rb.velocity = new Vector2(Speed * direction, _rb.velocity.y);
+        if (_isMoving)
+        {
+            float direction = _isEnemy ? -1 : 1;
+            _rb.velocity = new Vector2(Speed * direction, _rb.velocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,6 +83,10 @@ public class Creature : MonoBehaviour
         if (IsTarget(collision.gameObject) && !_isAttacking)
         {
             _animator.SetBool("IsEnemyNear", true);
+
+            _isMoving = false;
+            _rb.velocity = Vector2.zero;
+
             StartCoroutine(DelayedAttack());
         }
     }
@@ -114,6 +123,7 @@ public class Creature : MonoBehaviour
             Attack(target);
         }
 
+        _isMoving = true;
         _isAttacking = false;
     }
 

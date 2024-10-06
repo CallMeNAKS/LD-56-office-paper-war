@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject _endGameUI;
     [SerializeField] private GameObject _winGameUI;
+
+    [SerializeField] private List<CreatureSpawner> _creatureSpawners;
+    [SerializeField] private GameObject _build;
+    [SerializeField] private List<GameObject> _Spawners;
+    [SerializeField] private List<Base> _Bases;
+
+    public float Difficulty = 1f;
+    private float _difficultyModifier = 0.2f;
 
     private void Awake()
     {
@@ -29,23 +38,39 @@ public class GameManager : MonoBehaviour
         _winGameUI.SetActive(true);
     }
 
-    private void Start()
-    {
-        // Инициализация и запуск игры
-    }
-
-    private void Update()
-    {
-        // Обновление логики игры
-    }
-
     public void StartGame()
     {
-        // Логика начала игры
+        foreach (var spawner in _Spawners)
+        {
+            spawner.SetActive(true);
+        }
     }
 
-    public void EndGame()
+    public void СontinueGame()
     {
-        // Логика завершения игры
+        float difficulty = Difficulty;
+        ResetStaff();
+        Difficulty = difficulty + _difficultyModifier;
+        StartGame();
+    }
+
+    public void RestartGame()
+    {
+        Difficulty = 1f;
+        ResetStaff();
+        StartGame();
+    }
+
+    private void ResetStaff()
+    {
+        foreach (var creature in _creatureSpawners)
+        {
+            creature.RemoveCreature();
+        }
+        _build.SetActive(false);
+        foreach (var baseBuild in _Bases)
+        {
+            baseBuild.ResetHealthUI();
+        }
     }
 }

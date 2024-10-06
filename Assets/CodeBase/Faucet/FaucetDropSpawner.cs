@@ -9,7 +9,8 @@ public class FaucetDropSpawner : MonoBehaviour
     public float fallSpeed = 5f;
     public float delayAfterFall = 2f;
     public CreatureSpawner CreatureSpawner;
-    private void Start()
+
+    private void OnEnable()
     {
         StartCoroutine(SpawnPrefabRoutine());
     }

@@ -315,7 +315,7 @@ TextureImporter:
         width: 248
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,7 +336,7 @@ TextureImporter:
         width: 46
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,6 +344,48 @@ TextureImporter:
       bones: []
       spriteID: fab800104f781474d994304301b71a12
       internalID: -1389776082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Panel
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 3305
+        width: 482
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e952ff96179834592cff35e2306ee8
+      internalID: -1569764512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Button
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 3071
+        width: 354
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac37cca3b6d48643b112075f8f5f991
+      internalID: -1302995510
       vertices: []
       indices: 
       edges: []
@@ -368,9 +410,11 @@ TextureImporter:
       InkBotle4: -1462042780
       Money: -885273084
       UI_Brush: -1612169133
+      UI_Button: -1302995510
       UI_F: -1596449445
       UI_HealthProgressBar: 300323493
       UI_OneHealth: -1389776082
+      UI_Panel: -1569764512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
