@@ -1272,6 +1272,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PaperMan_EraserPunch1
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 3175
+        width: 274
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b6f287da7130744a53ead711a99317
+      internalID: 1958774909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaperMan_EraserPunch2
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 3175
+        width: 274
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e070846eec95a4e4c83289a0dcc6fcf8
+      internalID: 383709601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaperMan_EraserPunch3
+      rect:
+        serializedVersion: 2
+        x: 3041
+        y: 3175
+        width: 300
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76100a300cf08284aacc2e0af8e5e1e4
+      internalID: -1471943877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaperMan_EraserPunch4
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 3163
+        width: 352
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c330d87f83b75f641af90b79da1d3ab4
+      internalID: 1622944675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1304,6 +1388,10 @@ TextureImporter:
       Idle: 1635316177
       PaperMan_1: 120294816
       PaperMan_2: -103260975
+      PaperMan_EraserPunch1: 1958774909
+      PaperMan_EraserPunch2: 383709601
+      PaperMan_EraserPunch3: -1471943877
+      PaperMan_EraserPunch4: 1622944675
       PaperMan_HummerPunch1: -1659925859
       PaperMan_HummerPunch10: -1777882107
       PaperMan_HummerPunch2: 1680554188
