@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Creature : MonoBehaviour
@@ -26,13 +27,13 @@ public class Creature : MonoBehaviour
         CreatureSprite = sprite;
 
         GetComponent<SpriteRenderer>().sprite = sprite;
-        Debug.Log($"A creature was created: {CreatureName}, Health: {Health}, Speed: {Speed}");
+        Debug.Log($"Создано существо: {CreatureName}, Здоровье: {Health}, Скорость: {Speed}");
     }
 
     public void BonusInitialize(int damage)
     {
         Damage += damage;
-        Debug.Log($"A creature was buffed: add {damage} damage");
+        Debug.Log($"Существо улучшено: добавлено {damage} урона");
     }
 
     public void AddEraser()
@@ -55,44 +56,53 @@ public class Creature : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if ((_isEnemy && collision.gameObject.CompareTag("Enemy")) ||
-            (!_isEnemy && collision.gameObject.CompareTag("Ally")))
-        {
-            Physics2D.IgnoreCollision(collision.collider, _collider);
-        }
-
-        if (_isEnemy && collision.gameObject.CompareTag("Ally") ||
-            !_isEnemy && collision.gameObject.CompareTag("Enemy"))
-        {
-                _animator.SetBool("IsEnemyNear", true);
-            if (!_isAttacking)
-            {
-                Invoke(nameof(DelayedAttack), 1f); // Задержка в 1 секунду перед первой атакой
-            }
-        }
+        HandleCollision(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if ((_isEnemy && collision.gameObject.CompareTag("Ally")) ||
-            (!_isEnemy && collision.gameObject.CompareTag("Enemy")))
+        if (IsTarget(collision.gameObject))
         {
             _animator.SetBool("IsEnemyNear", false);
         }
     }
 
-    private void DelayedAttack()
+    private void HandleCollision(Collision2D collision)
+    {
+        if (IsFriendlyCollision(collision.gameObject))
+        {
+            Physics2D.IgnoreCollision(collision.collider, _collider);
+            return;
+        }
+
+        if (IsTarget(collision.gameObject) && !_isAttacking)
+        {
+            _animator.SetBool("IsEnemyNear", true);
+            StartCoroutine(DelayedAttack());
+        }
+    }
+
+    private bool IsFriendlyCollision(GameObject other)
+    {
+        return (_isEnemy && other.CompareTag("Enemy")) || (!_isEnemy && other.CompareTag("Ally"));
+    }
+
+    private bool IsTarget(GameObject other)
+    {
+        return _isEnemy && other.CompareTag("Ally") || !_isEnemy && other.CompareTag("Enemy");
+    }
+
+    private IEnumerator DelayedAttack()
     {
         _isAttacking = true;
+        yield return new WaitForSeconds(1f);
 
-        // Найти объект цели для нанесения урона
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1f);
         GameObject target = null;
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1f); // Проверяем наличие объектов рядом
+
         foreach (var hitCollider in hitColliders)
         {
-            if (_isEnemy && hitCollider.CompareTag("Ally") ||
-                !_isEnemy && hitCollider.CompareTag("Enemy"))
+            if (IsTarget(hitCollider.gameObject))
             {
                 target = hitCollider.gameObject;
                 break;
@@ -103,6 +113,8 @@ public class Creature : MonoBehaviour
         {
             Attack(target);
         }
+
+        _isAttacking = false;
     }
 
     private void Attack(GameObject target)
@@ -110,16 +122,22 @@ public class Creature : MonoBehaviour
         Creature targetCreature = target.GetComponent<Creature>();
         if (targetCreature != null)
         {
-            targetCreature.TakeDamage(10);
+            targetCreature.TakeDamage(Damage);
         }
-
-        _isAttacking = false;
+        else
+        {
+            Base baseComponent = target.GetComponent<Base>();
+            if (baseComponent != null)
+            {
+                baseComponent.Hit(Damage / 2);
+            }
+        }
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        Debug.Log($"{CreatureName} took {damage} damage, health remaining: {Health}");
+        Debug.Log($"{CreatureName} получил {damage} урона, осталось здоровья: {Health}");
 
         if (Health <= 0)
         {
@@ -129,8 +147,8 @@ public class Creature : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{CreatureName} has died!");
-        if (_isEnemy == true)
+        Debug.Log($"{CreatureName} умер!");
+        if (_isEnemy)
         {
             CashManager.Instance.AddMoney(Coast);
         }
