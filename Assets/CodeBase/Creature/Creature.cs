@@ -35,6 +35,11 @@ public class Creature : MonoBehaviour
         Debug.Log($"A creature was buffed: add {damage} damage");
     }
 
+    public void AddEraser()
+    {
+        _animator.SetBool("IsEraser", true);
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();

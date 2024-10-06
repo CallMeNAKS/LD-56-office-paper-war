@@ -31,6 +31,12 @@ public class CashManager : MonoBehaviour
         ChangeMoneyUI();
     }
 
+    public void RemoveMoney(int amount)
+    {
+        Money -= amount;
+        ChangeMoneyUI();
+    }
+
     private void ChangeMoneyUI()
     {
         _moneyText.text = Money.ToString();

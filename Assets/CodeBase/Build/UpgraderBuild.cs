@@ -11,9 +11,15 @@ public class UpgraderBuild : MonoBehaviour
     [SerializeField] private int _bonusDamage;
     [SerializeField] private float _activationInterval = 5f;
 
+
     private void Start()
     {
         StartCoroutine(ActivateHoldObjectsPeriodically());
+    }
+
+    public void DecreaseActivationInterval(float time)
+    {
+        _activationInterval -= time;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +38,7 @@ public class UpgraderBuild : MonoBehaviour
         if (component != null)
         {
             component.BonusInitialize(_bonusDamage);
+            component.AddEraser();
         }
     }
 

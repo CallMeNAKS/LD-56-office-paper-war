@@ -264,6 +264,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_F
+      rect:
+        serializedVersion: 2
+        x: 1933
+        y: 3897
+        width: 154
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97a5d0a97ac17a47bd2de823e9dbec0
+      internalID: -1596449445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Brush
+      rect:
+        serializedVersion: 2
+        x: 2217
+        y: 3582
+        width: 498
+        height: 493
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb3555863daf544aa25d4f8ae5a2b50
+      internalID: -1612169133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -283,6 +325,8 @@ TextureImporter:
       InkBotle3: 1354976867
       InkBotle4: -1462042780
       Money: -885273084
+      UI_Brush: -1612169133
+      UI_F: -1596449445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
